@@ -149,16 +149,27 @@ function initPackageToggles() {
 }
 
 // Hero Slideshow
+// Hero Slideshow
 function initHeroSlideshow() {
     const slides = document.querySelectorAll('.hero-slide');
     const dots = document.querySelectorAll('.slide-dot');
     let currentSlide = 0;
     
     function showSlide(n) {
-        slides.forEach(slide => slide.style.opacity = '0');
+        // Hide all slides
+        slides.forEach(slide => {
+            slide.style.opacity = '0';
+            slide.style.zIndex = '0'; // Lower z-index for hidden slides
+            slide.style.pointerEvents = 'none'; // Disable pointer events for hidden slides
+        });
+        
+        // Update dots
         dots.forEach(dot => dot.classList.replace('bg-gray-500', 'bg-gray-200'));
         
+        // Show current slide
         slides[n].style.opacity = '1';
+        slides[n].style.zIndex = '1'; // Higher z-index for visible slide
+        slides[n].style.pointerEvents = 'auto'; // Enable pointer events for visible slide
         dots[n].classList.replace('bg-gray-200', 'bg-gray-500');
     }
     
@@ -174,6 +185,9 @@ function initHeroSlideshow() {
             showSlide(currentSlide);
         });
     });
+    
+    // Set initial state
+    showSlide(currentSlide);
     
     // Auto slideshow
     setInterval(nextSlide, 5000);
@@ -307,12 +321,47 @@ function initContactForm() {
     }
     
     contactForm.addEventListener('submit', function(e) {
-        // The form will use the mailto: protocol as specified in the action attribute
-        // This will open the user's default email client with a pre-filled email
-        console.log('Form submitted');
+        // Prevent the default form submission temporarily
+        e.preventDefault();
         
-        // You can add additional validation or tracking here if needed
-        // For example, you could send an analytics event
+        // Create and show the popup message
+        const popup = document.createElement('div');
+        popup.className = 'fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50';
+        popup.innerHTML = `
+            <div class="bg-white rounded-xl shadow-xl p-8 max-w-md mx-auto text-center">
+                <div class="text-green-500 mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">Message Sent!</h3>
+                <p class="text-gray-600 mb-6">Thank you for reaching out. Your message has been sent successfully.</p>
+                <button class="px-6 py-3 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white rounded-lg font-medium hover:from-yellow-500 hover:to-yellow-600 transition duration-300 transform hover:scale-[1.02]">
+                    Close
+                </button>
+            </div>
+        `;
+        
+        document.body.appendChild(popup);
+        
+        // Add event listener to close button
+        const closeButton = popup.querySelector('button');
+        closeButton.addEventListener('click', function() {
+            document.body.removeChild(popup);
+        });
+        
+        // Auto close after 5 seconds
+        setTimeout(() => {
+            if (document.body.contains(popup)) {
+                document.body.removeChild(popup);
+            }
+        }, 5000);
+        
+        // Continue with the form submission (mailto:)
+        console.log('Form submitted');
+        setTimeout(() => {
+            contactForm.submit();
+        }, 1000);
     });
 }
 // Add this at the beginning of your main.js file
