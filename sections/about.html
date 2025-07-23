@@ -1,69 +1,195 @@
 <!-- About Section -->
-<section id="about" class="py-16 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
-            <div class="mb-10 lg:mb-0">
-                <div class="relative">
-                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Marketing Professional" class="rounded-lg shadow-lg w-full h-auto object-cover">
-                    <div class="absolute -bottom-6 -right-6 bg-yellow-100 rounded-lg p-6 shadow-md">
-                        <p class="text-gray-900 font-bold text-lg">5+ Years Experience</p>
-                        <p class="text-gray-600">In Digital Marketing</p>
+<section id="about" class="py-20 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+    <!-- Background decoration -->
+    <div class="absolute top-0 left-0 w-full h-full">
+        <div class="absolute top-20 left-10 w-32 h-32 bg-yellow-100 rounded-full opacity-20 animate-pulse"></div>
+        <div class="absolute bottom-20 right-10 w-24 h-24 bg-yellow-200 rounded-full opacity-30 animate-pulse" style="animation-delay: 1s;"></div>
+    </div>
+    
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <!-- Section Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                Meet <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-600">RONA</span>
+            </h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-yellow-400 to-yellow-600 mx-auto mb-6 rounded-full"></div>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                Your dedicated digital marketing specialist, passionate about transforming businesses through strategic social media excellence.
+            </p>
+        </div>
+        
+        <!-- Two Column Layout -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            <!-- Left Column: Gallery -->
+            <div class="md:pr-4">
+                <!-- Main Image Container -->
+                <div class="relative group mb-6 overflow-hidden rounded-2xl">
+                    <div class="absolute -inset-4 bg-gradient-to-r from-yellow-400 to-yellow-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+                    <div class="relative">
+                        <img id="main-image" 
+                             src="images/herobg.jpg" 
+                             alt="RONA - Digital Marketing Specialist" 
+                             class="rounded-2xl shadow-2xl w-full h-auto object-cover transform group-hover:scale-105 transition duration-500 gallery-main-image">
+                        
+                        <!-- Experience Badge -->
+                        <div class="absolute -bottom-8 -right-8 bg-white rounded-2xl p-6 shadow-xl border border-gray-100 transform rotate-3 hover:rotate-0 transition duration-300">
+                            <div class="text-center">
+                                <p class="text-3xl font-bold text-gray-900 mb-1">5+</p>
+                                <p class="text-sm text-gray-600 font-medium">Years Experience</p>
+                                <p class="text-xs text-yellow-600 font-semibold">Digital Marketing</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Image Gallery Thumbnails -->
+                <div class="grid grid-cols-3 gap-4 gallery-container">
+                    <div class="gallery-item cursor-pointer group" data-image="hb1.jpg">
+                        <div class="relative overflow-hidden rounded-xl shadow-md border border-gray-200">
+                            <img src="images/hb1.jpg" 
+                                 alt="Gallery Image 1" 
+                                 class="w-full h-40 sm:h-48 object-cover transform group-hover:scale-110 transition duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition duration-300"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item cursor-pointer group" data-image="hb2.jpg">
+                        <div class="relative overflow-hidden rounded-xl shadow-md border border-gray-200">
+                            <img src="images/hb2.jpg" 
+                                 alt="Gallery Image 2" 
+                                 class="w-full h-40 sm:h-48 object-cover transform group-hover:scale-110 transition duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition duration-300"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="gallery-item cursor-pointer group" data-image="hb3.jpg">
+                        <div class="relative overflow-hidden rounded-xl shadow-md border border-gray-200">
+                            <img src="images/hb3.jpg" 
+                                 alt="Gallery Image 3" 
+                                 class="w-full h-40 sm:h-48 object-cover transform group-hover:scale-110 transition duration-300">
+                            <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition duration-300"></div>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <div>
-                <h2 class="text-3xl font-bold text-gray-900 mb-6">About RONA Marketing</h2>
-                <p class="text-gray-600 mb-6 text-lg">I'm a passionate digital marketing specialist with a focus on helping small businesses and entrepreneurs establish a strong online presence through strategic social media management and content creation.</p>
-                
-                <p class="text-gray-600 mb-8">My approach combines creativity with data-driven strategies to deliver measurable results for your business. Whether you're looking to increase brand awareness, engage with your audience, or drive conversions, I provide tailored solutions to meet your specific goals.</p>
-                
-                <div class="grid grid-cols-2 gap-6 mb-8">
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-yellow-100 flex items-center justify-center">
-                            <i class="fas fa-bullseye text-yellow-600"></i>
+            <!-- Right Column: Content -->
+            <div class="md:pl-4 mt-12 md:mt-0">
+                <!-- Content Section -->
+                <div class="space-y-8">
+                    <!-- Introduction -->
+                    <div class="space-y-6">
+                        <h3 class="text-2xl font-bold text-gray-900">Crafting Digital Success Stories</h3>
+                        <p class="text-lg text-gray-600 leading-relaxed">
+                            I'm a passionate digital marketing specialist with a focus on helping small businesses and entrepreneurs establish a strong online presence through strategic social media management and content creation.
+                        </p>
+                        
+                        <p class="text-gray-600 leading-relaxed">
+                            My approach combines creativity with data-driven strategies to deliver measurable results for your business. Whether you're looking to increase brand awareness, engage with your audience, or drive conversions, I provide tailored solutions to meet your specific goals.
+                        </p>
+                    </div>
+                    
+                    <!-- Key Features Grid -->
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-4xl mx-auto">
+                        <div class="group p-3 bg-white aspect-square rounded-lg shadow-sm hover:shadow-md transition duration-300 border border-gray-100 hover:border-yellow-200 flex flex-col items-center justify-center text-center">
+                            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-yellow-400 to-yellow-500 flex items-center justify-center group-hover:scale-110 transition duration-300 mb-2">
+                                <i class="fas fa-bullseye text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-900 mb-1">Strategic Approach</h4>
+                                <p class="text-gray-600 text-xs">Data-driven strategies</p>
+                            </div>
                         </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg font-medium text-gray-900">Strategic Approach</h3>
-                            <p class="mt-2 text-gray-600">Data-driven strategies tailored to your business goals</p>
+                        
+                        <div class="group p-3 bg-white aspect-square rounded-lg shadow-sm hover:shadow-md transition duration-300 border border-gray-100 hover:border-yellow-200 flex flex-col items-center justify-center text-center">
+                            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-yellow-400 to-yellow-500 flex items-center justify-center group-hover:scale-110 transition duration-300 mb-2">
+                                <i class="fas fa-chart-line text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-900 mb-1">Measurable Results</h4>
+                                <p class="text-gray-600 text-xs">Analytics that work</p>
+                            </div>
+                        </div>
+                        
+                        <div class="group p-3 bg-white aspect-square rounded-lg shadow-sm hover:shadow-md transition duration-300 border border-gray-100 hover:border-yellow-200 flex flex-col items-center justify-center text-center">
+                            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-yellow-400 to-yellow-500 flex items-center justify-center group-hover:scale-110 transition duration-300 mb-2">
+                                <i class="fas fa-paint-brush text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-900 mb-1">Creative Content</h4>
+                                <p class="text-gray-600 text-xs">Eye-catching visuals</p>
+                            </div>
+                        </div>
+                        
+                        <div class="group p-3 bg-white aspect-square rounded-lg shadow-sm hover:shadow-md transition duration-300 border border-gray-100 hover:border-yellow-200 flex flex-col items-center justify-center text-center">
+                            <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-yellow-400 to-yellow-500 flex items-center justify-center group-hover:scale-110 transition duration-300 mb-2">
+                                <i class="fas fa-users text-white"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-900 mb-1">Community Building</h4>
+                                <p class="text-gray-600 text-xs">Genuine connections</p>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-yellow-100 flex items-center justify-center">
-                            <i class="fas fa-paint-brush text-yellow-600"></i>
-                        </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg font-medium text-gray-900">Creative Content</h3>
-                            <p class="mt-2 text-gray-600">Eye-catching visuals and engaging copy that converts</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-yellow-100 flex items-center justify-center">
-                            <i class="fas fa-chart-line text-yellow-600"></i>
-                        </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg font-medium text-gray-900">Growth Focus</h3>
-                            <p class="mt-2 text-gray-600">Strategies designed to scale your online presence</p>
-                        </div>
-                    </div>
-                    
-                    <div class="flex items-start">
-                        <div class="flex-shrink-0 h-10 w-10 rounded-full bg-yellow-100 flex items-center justify-center">
-                            <i class="fas fa-users text-yellow-600"></i>
-                        </div>
-                        <div class="ml-4">
-                            <h3 class="text-lg font-medium text-gray-900">Community Building</h3>
-                            <p class="mt-2 text-gray-600">Creating engaged audiences that support your brand</p>
-                        </div>
+                    <!-- CTA Button -->
+                    <div class="pt-6">
+                        <a href="#contact" class="group inline-flex items-center justify-center px-8 py-4 border border-transparent rounded-xl shadow-lg text-base font-semibold text-white bg-gradient-to-r from-gray-900 to-gray-800 hover:from-gray-800 hover:to-gray-700 transform hover:scale-105 transition duration-300">
+                            <span>Get to Know Me</span>
+                            <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition duration-300"></i>
+                        </a>
                     </div>
                 </div>
-                
-                <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gray-900 hover:bg-gray-800 transition duration-300">
-                    Get to Know Me
-                </a>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+// Wait for DOM to be fully loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Get all gallery items
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const mainImage = document.getElementById('main-image');
+    
+    // Add click event listeners to each gallery item
+    galleryItems.forEach(function(item) {
+        item.addEventListener('click', function() {
+            // Get the image name from data attribute
+            const newImageName = this.getAttribute('data-image');
+            const clickedImg = this.querySelector('img');
+            
+            // Get current main image source
+            const currentSrc = mainImage.src;
+            const currentImageName = currentSrc.substring(currentSrc.lastIndexOf('/') + 1);
+            
+            // Only swap if different images
+            if (newImageName !== currentImageName) {
+                // Add transition effect
+                mainImage.style.transition = 'all 0.3s ease';
+                mainImage.style.opacity = '0.7';
+                mainImage.style.transform = 'scale(0.95)';
+                
+                setTimeout(function() {
+                    // Swap the images
+                    mainImage.src = 'images/' + newImageName;
+                    clickedImg.src = 'images/' + currentImageName;
+                    
+                    // Update data attribute
+                    item.setAttribute('data-image', currentImageName);
+                    
+                    // Restore main image
+                    mainImage.style.opacity = '1';
+                    mainImage.style.transform = 'scale(1)';
+                    
+                    // Add bounce effect to clicked thumbnail
+                    item.style.transform = 'scale(0.95)';
+                    setTimeout(function() {
+                        item.style.transform = 'scale(1)';
+                    }, 150);
+                }, 200);
+            }
+        });
+    });
+});
+</script>

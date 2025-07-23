@@ -1,16 +1,28 @@
 <!-- Hero Section with Slideshow -->
-<section class="relative bg-gray-50 overflow-hidden">
-    <div class="relative h-[600px] md:h-[700px]">
+<section class="relative bg-gray-50 overflow-hidden hero-section">
+    <!-- No overlay for maximum face visibility -->
+    
+    <div class="relative h-[600px] md:h-[700px] z-10">
         <!-- Slide 1 -->
         <div class="hero-slide flex items-center justify-center h-full">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">Elevate Your Brand's Online Presence</h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">Strategic social media management and content creation to help your business stand out in the digital landscape.</p>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-2xl" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Elevate Your Brand's Online Presence</h1>
+                <p class="text-xl text-white max-w-3xl mx-auto mb-8 drop-shadow-xl" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.7);">Strategic social media management and content creation to help your business stand out in the digital landscape.</p>
                 <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#packages" class="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gray-900 hover:bg-gray-800 transition duration-300">
+                    <a href="#packages" class="hero-btn-custom-dark"
+                       style="display: inline-flex; align-items: center; justify-content: center; padding: 12px 24px; background-color: rgba(31, 41, 55, 0.9); color: white; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
+                       onmouseover="this.style.backgroundColor='rgba(17, 24, 39, 0.95)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 15px rgba(0, 0, 0, 0.2)';"
+                       onmouseout="this.style.backgroundColor='rgba(31, 41, 55, 0.9)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)';"
+                       ontouchstart="this.style.backgroundColor='rgba(17, 24, 39, 0.95)'; this.style.transform='scale(0.98)';"
+                       ontouchend="this.style.backgroundColor='rgba(31, 41, 55, 0.9)'; this.style.transform='scale(1)';">
                         View Packages
                     </a>
-                    <a href="#book" class="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-900 bg-yellow-100 hover:bg-yellow-200 transition duration-300">
+                    <a href="#contact" class="hero-btn-custom-light"
+                       style="display: inline-flex; align-items: center; justify-content: center; padding: 12px 24px; background-color: rgba(254, 243, 199, 0.9); color: #374151; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
+                       onmouseover="this.style.backgroundColor='rgba(245, 158, 11, 0.9)'; this.style.color='white'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 15px rgba(245, 158, 11, 0.3)';"
+                       onmouseout="this.style.backgroundColor='rgba(254, 243, 199, 0.9)'; this.style.color='#374151'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)';"
+                       ontouchstart="this.style.backgroundColor='rgba(245, 158, 11, 0.9)'; this.style.color='white'; this.style.transform='scale(0.98)';"
+                       ontouchend="this.style.backgroundColor='rgba(254, 243, 199, 0.9)'; this.style.color='#374151'; this.style.transform='scale(1)';">
                         Book a Consultation
                     </a>
                 </div>
@@ -20,14 +32,24 @@
         <!-- Slide 2 -->
         <div class="hero-slide flex items-center justify-center h-full">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">Content That Converts</h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">From eye-catching graphics to engaging captions, we create content that resonates with your audience and drives results.</p>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-2xl" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Content That Converts</h1>
+                <p class="text-xl text-white max-w-3xl mx-auto mb-8 drop-shadow-xl" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.7);">From eye-catching graphics to engaging captions, we create content that resonates with your audience and drives results.</p>
                 <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#services" class="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gray-900 hover:bg-gray-800 transition duration-300">
+                    <a href="#services" class="hero-btn-custom-dark"
+                       style="display: inline-flex; align-items: center; justify-content: center; padding: 12px 24px; background-color: rgba(31, 41, 55, 0.9); color: white; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
+                       onmouseover="this.style.backgroundColor='rgba(17, 24, 39, 0.95)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 15px rgba(0, 0, 0, 0.2)';"
+                       onmouseout="this.style.backgroundColor='rgba(31, 41, 55, 0.9)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)';"
+                       ontouchstart="this.style.backgroundColor='rgba(17, 24, 39, 0.95)'; this.style.transform='scale(0.98)';"
+                       ontouchend="this.style.backgroundColor='rgba(31, 41, 55, 0.9)'; this.style.transform='scale(1)';">
                         Explore Services
                     </a>
-                    <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-900 bg-yellow-100 hover:bg-yellow-200 transition duration-300">
-                        Get in Touch
+                    <a href="#contact" class="hero-btn-custom-light"
+                       style="display: inline-flex; align-items: center; justify-content: center; padding: 12px 24px; background-color: rgba(254, 243, 199, 0.9); color: #374151; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
+                       onmouseover="this.style.backgroundColor='rgba(245, 158, 11, 0.9)'; this.style.color='white'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 15px rgba(245, 158, 11, 0.3)';"
+                       onmouseout="this.style.backgroundColor='rgba(254, 243, 199, 0.9)'; this.style.color='#374151'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)';"
+                       ontouchstart="this.style.backgroundColor='rgba(245, 158, 11, 0.9)'; this.style.color='white'; this.style.transform='scale(0.98)';"
+                       ontouchend="this.style.backgroundColor='rgba(254, 243, 199, 0.9)'; this.style.color='#374151'; this.style.transform='scale(1)';">
+                        Contact Me
                     </a>
                 </div>
             </div>
@@ -36,41 +58,34 @@
         <!-- Slide 3 -->
         <div class="hero-slide flex items-center justify-center h-full">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">Tailored Social Media Strategies</h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">Custom social media management packages designed to meet your specific business goals and budget.</p>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 drop-shadow-2xl" style="text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Grow Your Social Media Presence</h1>
+                <p class="text-xl text-white max-w-3xl mx-auto mb-8 drop-shadow-xl" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.7);">Tailored strategies to increase engagement, followers, and conversions on all major social media platforms.</p>
                 <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#packages" class="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gray-900 hover:bg-gray-800 transition duration-300">
+                    <a href="#packages" class="hero-btn-custom-dark"
+                       style="display: inline-flex; align-items: center; justify-content: center; padding: 12px 24px; background-color: rgba(31, 41, 55, 0.9); color: white; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
+                       onmouseover="this.style.backgroundColor='rgba(17, 24, 39, 0.95)'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 15px rgba(0, 0, 0, 0.2)';"
+                       onmouseout="this.style.backgroundColor='rgba(31, 41, 55, 0.9)'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)';"
+                       ontouchstart="this.style.backgroundColor='rgba(17, 24, 39, 0.95)'; this.style.transform='scale(0.98)';"
+                       ontouchend="this.style.backgroundColor='rgba(31, 41, 55, 0.9)'; this.style.transform='scale(1)';">
                         See Pricing
                     </a>
-                    <a href="#book" class="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-900 bg-yellow-100 hover:bg-yellow-200 transition duration-300">
-                        Schedule a Call
+                    <a href="#contact" class="hero-btn-custom-light"
+                       style="display: inline-flex; align-items: center; justify-content: center; padding: 12px 24px; background-color: rgba(254, 243, 199, 0.9); color: #374151; border-radius: 8px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);"
+                       onmouseover="this.style.backgroundColor='rgba(245, 158, 11, 0.9)'; this.style.color='white'; this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 15px rgba(245, 158, 11, 0.3)';"
+                       onmouseout="this.style.backgroundColor='rgba(254, 243, 199, 0.9)'; this.style.color='#374151'; this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 6px rgba(0, 0, 0, 0.1)';"
+                       ontouchstart="this.style.backgroundColor='rgba(245, 158, 11, 0.9)'; this.style.color='white'; this.style.transform='scale(0.98)';"
+                       ontouchend="this.style.backgroundColor='rgba(254, 243, 199, 0.9)'; this.style.color='#374151'; this.style.transform='scale(1)';">
+                        Get Started
                     </a>
                 </div>
             </div>
         </div>
-        
-        <!-- Slide 4 -->
-        <div class="hero-slide flex items-center justify-center h-full">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">Ready to Transform Your Social Media?</h1>
-                <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-8">Take the first step towards a stronger online presence with a free 30-minute consultation.</p>
-                <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#book" class="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-gray-900 hover:bg-gray-800 transition duration-300">
-                        Book Now
-                    </a>
-                    <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-gray-900 bg-yellow-100 hover:bg-yellow-200 transition duration-300">
-                        Contact Me
-                    </a>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Slideshow Controls -->
-        <div class="absolute bottom-8 left-0 right-0 flex justify-center space-x-2">
-            <button class="slide-dot w-3 h-3 rounded-full bg-gray-500 focus:outline-none"></button>
-            <button class="slide-dot w-3 h-3 rounded-full bg-gray-200 focus:outline-none"></button>
-            <button class="slide-dot w-3 h-3 rounded-full bg-gray-200 focus:outline-none"></button>
-            <button class="slide-dot w-3 h-3 rounded-full bg-gray-200 focus:outline-none"></button>
-        </div>
+    </div>
+    
+    <!-- Slideshow Controls -->
+    <div class="absolute bottom-6 left-0 right-0 flex justify-center space-x-3 z-10">
+        <button class="slide-dot h-3 w-3 rounded-full bg-white bg-opacity-70 focus:outline-none shadow-lg"></button>
+        <button class="slide-dot h-3 w-3 rounded-full bg-white bg-opacity-40 focus:outline-none shadow-lg"></button>
+        <button class="slide-dot h-3 w-3 rounded-full bg-white bg-opacity-40 focus:outline-none shadow-lg"></button>
     </div>
 </section>

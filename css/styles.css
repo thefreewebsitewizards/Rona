@@ -4,10 +4,25 @@
     --text-dark: #1F2937;
     --text-light: #6B7280;
     --bg-light: #F9FAFB;
+    --header-height: 64px;
+}
+
+/* Header styles */
+nav.sticky, nav.bg-white {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    background-color: white;
+    width: 100%;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 body {
+    scroll-padding-top: var(--header-height); /* This helps with anchor links */
     font-family: 'Inter', sans-serif;
+    padding-top: var(--header-height); /* Add padding to account for fixed header */
 }
 
 .hero-slide {
@@ -24,13 +39,191 @@ body {
     opacity: 1;
 }
 
-.mobile-menu {
+/* Mobile Menu Styles - COMPLETE REPLACEMENT */
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu-new {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 280px;
+    background-color: white;
+    z-index: 999;
     transform: translateX(100%);
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    box-shadow: -4px 0 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu-new.active {
+    transform: translateX(0);
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #e5e7eb;
+    flex-shrink: 0;
+    background-color: white;
+}
+
+.close-menu-btn {
+    padding: 8px;
+    border-radius: 6px;
+    color: #6b7280;
+    transition: all 0.2s;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.close-menu-btn:hover {
+    background-color: #f3f4f6;
+    color: #374151;
+}
+
+.mobile-menu-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: 0;
+    background-color: white;
+}
+
+.mobile-menu-links {
+    flex: 1;
+    padding: 20px;
+    background-color: white;
+}
+
+.mobile-menu-link {
+    display: block !important;
+    padding: 16px 0 !important;
+    color: #374151 !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid #f3f4f6 !important;
+    transition: color 0.2s !important;
+    background-color: transparent !important;
+}
+
+.mobile-menu-link:hover {
+    color: #f59e0b !important;
+}
+
+.mobile-menu-link.active {
+    color: #f59e0b !important;
+    font-weight: 600 !important;
+}
+
+.mobile-menu-cta {
+    padding: 20px;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+    margin: 0;
+    background-color: white;
+}
+
+.mobile-cta-btn {
+    display: block !important;
+    width: 100% !important;
+    padding: 12px 16px !important;
+    background-color: #fef3c7 !important;
+    color: #374151 !important;
+    text-align: center !important;
+    font-weight: 600 !important;
+    border-radius: 8px !important;
+    text-decoration: none !important;
+    transition: background-color 0.2s !important;
+    border: none !important;
+}
+
+.mobile-cta-btn:hover {
+    background-color: #fde68a !important;
+}
+
+.mobile-menu-social {
+    padding: 20px;
+    background-color: white;
+}
+
+.social-title {
+    color: #6b7280 !important;
+    font-size: 14px !important;
+    margin-bottom: 12px !important;
+}
+
+.social-links {
+    display: flex !important;
+    gap: 16px !important;
+}
+
+.social-link {
+    color: #6b7280 !important;
+    font-size: 18px !important;
+    transition: color 0.2s !important;
+    text-decoration: none !important;
+}
+
+.social-link:hover {
+    color: #f59e0b !important;
+}
+
+/* COMPLETELY HIDE OLD MOBILE MENU */
+.mobile-menu {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
 }
 
 .mobile-menu.open {
-    transform: translateX(0);
+    transform: translateX(0) !important;
+}
+
+/* Ensure mobile menu content is properly spaced and visible */
+.mobile-menu .space-y-1 > a {
+    display: block !important;
+    padding: 12px 16px !important;
+    margin: 4px 0 !important;
+    min-height: 44px !important; /* Ensure touch-friendly height */
+}
+
+/* Ensure all mobile menu sections are visible */
+.mobile-menu > div {
+    flex-shrink: 0 !important;
+}
+
+/* Fix for mobile menu button container */
+.mobile-menu .pt-4.pb-3.border-t {
+    margin-top: 0 !important;
+    padding-top: 16px !important;
+}
+
+.mobile-menu .mt-8.p-4.border-t {
+    margin-top: 16px !important;
+    padding: 16px !important;
 }
 
 .package-card:hover {
@@ -46,4 +239,224 @@ body {
 
 .toggle-content.show {
     max-height: 500px;
+}
+
+
+/* Add these styles to fix package layout */
+.package-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 500px;
+}
+
+.package-card .p-6 {
+    flex-grow: 1;
+}
+
+/* Ensure grid items don't overflow */
+#packages-container {
+    overflow: hidden;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media (min-width: 768px) {
+    .md\:grid-cols-2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .lg\:grid-cols-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Simple Mobile Menu */
+#mobile-menu {
+    background-color: white !important;
+    border-top: 1px solid #e5e7eb !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1) !important;
+}
+
+#mobile-menu a {
+    display: block !important;
+    padding: 12px 16px !important;
+    color: #374151 !important;
+    text-decoration: none !important;
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    border-radius: 6px !important;
+    margin: 4px 8px !important;
+}
+
+#mobile-menu a:hover {
+    background-color: #f9fafb !important;
+    color: #f59e0b !important;
+}
+
+/* Hero Section Responsive Background Images */
+.hero-section {
+    /* Mobile background - herobgm.jpg */
+    background-image: url('../images/herobgm.jpg');
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+/* Desktop background - herobg.jpg for screens 768px and above */
+@media (min-width: 768px) {
+    .hero-section {
+        background-image: url('../images/herobg.jpg');
+        background-position: center top;
+    }
+}
+
+/* Hero Button Styles with Enhanced Hover Effects */
+.hero-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(0);
+    position: relative;
+    overflow: hidden;
+}
+
+/* Primary Button (Dark) */
+.hero-btn-primary {
+    background-color: rgba(31, 41, 55, 0.9);
+    color: white;
+    border: 2px solid transparent;
+}
+
+.hero-btn-primary:hover {
+    background-color: rgba(17, 24, 39, 0.95);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.hero-btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Secondary Button (Yellow) */
+.hero-btn-secondary {
+    background-color: rgba(254, 243, 199, 0.9);
+    color: #374151;
+    border: 2px solid transparent;
+}
+
+.hero-btn-secondary:hover {
+    background-color: rgba(245, 158, 11, 0.9);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(245, 158, 11, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.hero-btn-secondary:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Mobile Touch Effects */
+@media (max-width: 767px) {
+    .hero-btn {
+        padding: 14px 28px;
+        font-size: 16px;
+        min-height: 48px;
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    /* Touch-specific hover effects for mobile */
+    .hero-btn:active {
+        transform: scale(0.98);
+    }
+    
+    .hero-btn-primary:active {
+        background-color: rgba(17, 24, 39, 0.95);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    .hero-btn-secondary:active {
+        background-color: rgba(245, 158, 11, 0.9);
+        color: white;
+        box-shadow: 0 6px 12px rgba(245, 158, 11, 0.25);
+    }
+}
+
+/* Ripple Effect Animation */
+.hero-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.hero-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* Focus states for accessibility */
+.hero-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.5);
+}
+
+
+/* Image Gallery Styles */
+.gallery-container {
+    transition: all 0.3s ease;
+    margin-top: 2rem;
+}
+
+.gallery-item {
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.75rem;
+}
+
+.gallery-item img {
+    transition: all 0.3s ease;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-item:hover {
+    z-index: 10;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-main-image {
+    transition: all 0.5s ease;
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
 }
