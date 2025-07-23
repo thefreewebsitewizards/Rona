@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const totalSections = 7;
     
     // Function to check if all sections are loaded
+    // In the checkAllSectionsLoaded function (around line 10)
     function checkAllSectionsLoaded() {
         sectionsLoaded++;
         if (sectionsLoaded === totalSections) {
@@ -15,21 +16,27 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(initPackageToggles, 500);
             // Initialize image gallery after all sections are loaded
             setTimeout(initImageGallery, 500);
+            // Initialize contact form after all sections are loaded
+            setTimeout(initContactForm, 500);
+            // Add this line to ensure hero slideshow is initialized
+            setTimeout(initHeroSlideshow, 500);
         }
     }
     
     // Load all section content
-    loadSection('nav-container', 'sections/navigation.html', checkAllSectionsLoaded);
-    loadSection('hero-container', 'sections/hero.html', checkAllSectionsLoaded);
-    loadSection('about-container', 'sections/about.html', checkAllSectionsLoaded);
-    loadSection('packages-container', 'sections/packages.html', checkAllSectionsLoaded);
-    loadSection('services-container', 'sections/services.html', checkAllSectionsLoaded);
-    loadSection('contact-container', 'sections/contact.html', checkAllSectionsLoaded);
-    loadSection('footer-container', 'sections/footer.html', checkAllSectionsLoaded);
+    // Modify the loadSection calls to use absolute paths
+    loadSection('nav-container', '/sections/navigation.html', checkAllSectionsLoaded);
+    loadSection('hero-container', '/sections/hero.html', checkAllSectionsLoaded);
+    loadSection('about-container', '/sections/about.html', checkAllSectionsLoaded);
+    loadSection('packages-container', '/sections/packages.html', checkAllSectionsLoaded);
+    loadSection('services-container', '/sections/services.html', checkAllSectionsLoaded);
+    loadSection('contact-container', '/sections/contact.html', checkAllSectionsLoaded);
+    loadSection('footer-container', '/sections/footer.html', checkAllSectionsLoaded);
 });
 
 // Function to load HTML sections
 // Modify the loadSection function to handle layout issues
+// Modify the loadSection function (around line 40-50)
 function loadSection(containerId, sectionPath, callback) {
     fetch(sectionPath)
         .then(response => {
@@ -46,11 +53,12 @@ function loadSection(containerId, sectionPath, callback) {
             container.offsetHeight;
             
             // Initialize section-specific scripts after loading
-            if (sectionPath === 'sections/navigation.html') {
+            // Fix the path comparison by removing the leading slash
+            if (sectionPath === '/sections/navigation.html' || sectionPath.endsWith('navigation.html')) {
                 initMobileMenu();
-            } else if (sectionPath === 'sections/hero.html') {
+            } else if (sectionPath === '/sections/hero.html' || sectionPath.endsWith('hero.html')) {
                 initHeroSlideshow();
-            } else if (sectionPath === 'sections/packages.html') {
+            } else if (sectionPath === '/sections/packages.html' || sectionPath.endsWith('packages.html')) {
                 // Force grid layout refresh
                 setTimeout(() => {
                     const grid = container.querySelector('.grid');
@@ -284,5 +292,63 @@ function debugSections() {
     }
 }
 
+// Run debug after a delay to ensure everything has loaded
+setTimeout(debugSections, 2000);
+
+
+// Initialize form submission after all sections are loaded
+function initContactForm() {
+    const contactForm = document.getElementById('contact-form');
+    
+    if (!contactForm) {
+        console.warn('Contact form not found. Will retry in 500ms.');
+        setTimeout(initContactForm, 500);
+        return;
+    }
+    
+    contactForm.addEventListener('submit', function(e) {
+        // The form will use the mailto: protocol as specified in the action attribute
+        // This will open the user's default email client with a pre-filled email
+        console.log('Form submitted');
+        
+        // You can add additional validation or tracking here if needed
+        // For example, you could send an analytics event
+    });
+}
+// Add this at the beginning of your main.js file
+window.addEventListener('error', function(e) {
+    console.error('Global error caught:', e.error);
+});
+// Remove this duplicate event listener at the end of the file (around line 315-335)
+// document.addEventListener('DOMContentLoaded', function() {
+//     // Track loaded sections
+//     let sectionsLoaded = 0;
+//     const totalSections = 7;
+//     
+//     // Function to check if all sections are loaded
+//     function checkAllSectionsLoaded() {
+//         sectionsLoaded++;
+//         if (sectionsLoaded === totalSections) {
+//             console.log('All sections loaded successfully');
+//             // Initialize smooth scrolling after all sections are loaded
+//             setTimeout(initSmoothScroll, 500);
+//             // Initialize package toggles after all sections are loaded
+//             setTimeout(initPackageToggles, 500);
+//             // Initialize image gallery after all sections are loaded
+//             setTimeout(initImageGallery, 500);
+//             // Initialize contact form after all sections are loaded
+//             setTimeout(initContactForm, 500);
+//         }
+//     }
+//     
+//     // Load all section content
+//     loadSection('nav-container', 'sections/navigation.html', checkAllSectionsLoaded);
+//     loadSection('hero-container', 'sections/hero.html', checkAllSectionsLoaded);
+//     loadSection('about-container', 'sections/about.html', checkAllSectionsLoaded);
+//     loadSection('packages-container', 'sections/packages.html', checkAllSectionsLoaded);
+//     loadSection('services-container', 'sections/services.html', checkAllSectionsLoaded);
+//     loadSection('contact-container', 'sections/contact.html', checkAllSectionsLoaded);
+//     loadSection('footer-container', 'sections/footer.html', checkAllSectionsLoaded);
+// });
 // Run debug after a delay to ensure everything has loaded
 setTimeout(debugSections, 2000);
