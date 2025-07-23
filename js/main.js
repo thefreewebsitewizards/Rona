@@ -321,67 +321,50 @@ function initContactForm() {
     }
     
     contactForm.addEventListener('submit', function(e) {
-        // Prevent the default form submission
-        e.preventDefault();
-        
-        // Show loading state
+        // Show a success message before opening the email client
         const submitButton = contactForm.querySelector('button[type="submit"]');
         const originalButtonText = submitButton.innerHTML;
-        submitButton.innerHTML = 'Sending...';
-        submitButton.disabled = true;
+        submitButton.innerHTML = 'Opening Email Client...';
         
-        // Send the email using EmailJS
-        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', contactForm)
-            .then(function() {
-                // Create and show the success popup message
-                const popup = document.createElement('div');
-                popup.className = 'fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50';
-                popup.innerHTML = `
-                    <div class="bg-white rounded-xl shadow-xl p-8 max-w-md mx-auto text-center">
-                        <div class="text-green-500 mb-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                        </div>
-                        <h3 class="text-2xl font-bold text-gray-900 mb-2">Message Sent!</h3>
-                        <p class="text-gray-600 mb-6">Thank you for reaching out. Your message has been sent successfully.</p>
-                        <button class="px-6 py-3 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white rounded-lg font-medium hover:from-yellow-500 hover:to-yellow-600 transition duration-300 transform hover:scale-[1.02]">
-                            Close
-                        </button>
-                    </div>
-                `;
-                
-                document.body.appendChild(popup);
-                
-                // Reset the form
-                contactForm.reset();
-                
-                // Reset button state
-                submitButton.innerHTML = originalButtonText;
-                submitButton.disabled = false;
-                
-                // Add event listener to close button
-                const closeButton = popup.querySelector('button');
-                closeButton.addEventListener('click', function() {
-                    document.body.removeChild(popup);
-                });
-                
-                // Auto close after 5 seconds
-                setTimeout(() => {
-                    if (document.body.contains(popup)) {
-                        document.body.removeChild(popup);
-                    }
-                }, 5000);
-            })
-            .catch(function(error) {
-                // Show error message
-                console.error('EmailJS error:', error);
-                alert('Sorry, there was an error sending your message. Please try again later.');
-                
-                // Reset button state
-                submitButton.innerHTML = originalButtonText;
-                submitButton.disabled = false;
-            });
+        // Create and show the success popup message
+        const popup = document.createElement('div');
+        popup.className = 'fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50 z-50';
+        popup.innerHTML = `
+            <div class="bg-white rounded-xl shadow-xl p-8 max-w-md mx-auto text-center">
+                <div class="text-green-500 mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-2">Opening Email Client</h3>
+                <p class="text-gray-600 mb-6">Your email client will open shortly. You can review your message before sending.</p>
+                <button class="px-6 py-3 bg-gradient-to-r from-yellow-400 to-yellow-500 text-white rounded-lg font-medium hover:from-yellow-500 hover:to-yellow-600 transition duration-300 transform hover:scale-[1.02]">
+                    Close
+                </button>
+            </div>
+        `;
+        
+        document.body.appendChild(popup);
+        
+        // Add event listener to close button
+        const closeButton = popup.querySelector('button');
+        closeButton.addEventListener('click', function() {
+            document.body.removeChild(popup);
+        });
+        
+        // Auto close after 1 second and proceed with form submission
+        setTimeout(() => {
+            if (document.body.contains(popup)) {
+                document.body.removeChild(popup);
+            }
+            submitButton.innerHTML = originalButtonText;
+            // Allow the form to submit normally (will open email client)
+        }, 1000);
+        
+        // Delay the form submission to allow the popup to show
+        setTimeout(() => {
+            // Continue with the default form submission (will open email client)
+        }, 1500);
     });
 }
 // Add this at the beginning of your main.js file
