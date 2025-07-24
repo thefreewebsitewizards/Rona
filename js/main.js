@@ -54,11 +54,11 @@ function loadSection(containerId, sectionPath, callback) {
             
             // Initialize section-specific scripts after loading
             // Fix the path comparison by removing the leading slash
-            if (sectionPath === '/sections/navigation.html' || sectionPath.endsWith('navigation.html')) {
+            if (sectionPath === 'sections/navigation.html' || sectionPath.endsWith('navigation.html')) {
                 initMobileMenu();
-            } else if (sectionPath === '/sections/hero.html' || sectionPath.endsWith('hero.html')) {
+            } else if (sectionPath === 'sections/hero.html' || sectionPath.endsWith('hero.html')) {
                 initHeroSlideshow();
-            } else if (sectionPath === '/sections/packages.html' || sectionPath.endsWith('packages.html')) {
+            } else if (sectionPath === 'sections/packages.html' || sectionPath.endsWith('packages.html')) {
                 // Force grid layout refresh
                 setTimeout(() => {
                     const grid = container.querySelector('.grid');
@@ -84,31 +84,55 @@ function loadSection(containerId, sectionPath, callback) {
 }
 
 // Mobile Menu Toggle - Replace existing initMobileMenu function
-// Simple Mobile Menu Toggle
+// Mobile Menu Toggle
 function initMobileMenu() {
     const mobileMenuButton = document.getElementById('mobile-menu-button');
+    // Use getElementById instead of querySelector for more reliable selection
     const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+    const closeMenuButton = document.getElementById('close-mobile-menu');
     
-    if (mobileMenuButton && mobileMenu) {
-        let isOpen = false;
-        
+    console.log('Mobile menu elements:', { 
+        button: mobileMenuButton, 
+        menu: mobileMenu, 
+        overlay: mobileMenuOverlay, 
+        closeBtn: closeMenuButton 
+    });
+    
+    if (mobileMenuButton && mobileMenu && mobileMenuOverlay) {
+        // Open menu
         mobileMenuButton.addEventListener('click', () => {
-            if (isOpen) {
-                mobileMenu.style.display = 'none';
-                isOpen = false;
-            } else {
-                mobileMenu.style.display = 'block';
-                isOpen = true;
-            }
+            console.log('Menu button clicked');
+            mobileMenu.classList.add('active');
+            mobileMenuOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
         });
         
+        // Close menu functions
+        const closeMenu = () => {
+            mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
+            document.body.style.overflow = ''; // Re-enable scrolling
+        };
+        
+        // Close on X button click
+        if (closeMenuButton) {
+            closeMenuButton.addEventListener('click', closeMenu);
+        }
+        
+        // Close on overlay click
+        mobileMenuOverlay.addEventListener('click', closeMenu);
+        
         // Close menu when clicking on links
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+        const mobileMenuLinks = mobileMenu.querySelectorAll('.mobile-menu-link');
         mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.style.display = 'none';
-                isOpen = false;
-            });
+            link.addEventListener('click', closeMenu);
+        });
+    } else {
+        console.warn('Mobile menu elements not found:', { 
+            buttonFound: !!mobileMenuButton, 
+            menuFound: !!mobileMenu, 
+            overlayFound: !!mobileMenuOverlay 
         });
     }
 }
@@ -371,36 +395,13 @@ function initContactForm() {
 window.addEventListener('error', function(e) {
     console.error('Global error caught:', e.error);
 });
-// Remove this duplicate event listener at the end of the file (around line 315-335)
-// document.addEventListener('DOMContentLoaded', function() {
-//     // Track loaded sections
-//     let sectionsLoaded = 0;
-//     const totalSections = 7;
-//     
-//     // Function to check if all sections are loaded
-//     function checkAllSectionsLoaded() {
-//         sectionsLoaded++;
-//         if (sectionsLoaded === totalSections) {
-//             console.log('All sections loaded successfully');
-//             // Initialize smooth scrolling after all sections are loaded
-//             setTimeout(initSmoothScroll, 500);
-//             // Initialize package toggles after all sections are loaded
-//             setTimeout(initPackageToggles, 500);
-//             // Initialize image gallery after all sections are loaded
-//             setTimeout(initImageGallery, 500);
-//             // Initialize contact form after all sections are loaded
-//             setTimeout(initContactForm, 500);
-//         }
-//     }
-//     
-//     // Load all section content
-//     loadSection('nav-container', 'sections/navigation.html', checkAllSectionsLoaded);
-//     loadSection('hero-container', 'sections/hero.html', checkAllSectionsLoaded);
-//     loadSection('about-container', 'sections/about.html', checkAllSectionsLoaded);
-//     loadSection('packages-container', 'sections/packages.html', checkAllSectionsLoaded);
-//     loadSection('services-container', 'sections/services.html', checkAllSectionsLoaded);
-//     loadSection('contact-container', 'sections/contact.html', checkAllSectionsLoaded);
-//     loadSection('footer-container', 'sections/footer.html', checkAllSectionsLoaded);
-// });
+// Change these lines (around line 25-31)
+loadSection('nav-container', 'sections/navigation.html', checkAllSectionsLoaded);
+loadSection('hero-container', 'sections/hero.html', checkAllSectionsLoaded);
+loadSection('about-container', 'sections/about.html', checkAllSectionsLoaded);
+loadSection('packages-container', 'sections/packages.html', checkAllSectionsLoaded);
+loadSection('services-container', 'sections/services.html', checkAllSectionsLoaded);
+loadSection('contact-container', 'sections/contact.html', checkAllSectionsLoaded);
+loadSection('footer-container', 'sections/footer.html', checkAllSectionsLoaded);
 // Run debug after a delay to ensure everything has loaded
 setTimeout(debugSections, 2000);
